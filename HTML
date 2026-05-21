@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Fotografico Milano</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      background:#f7f7f7;
+      color:#333;
+      line-height:1.6;
+    }
+
+    header{
+      background:url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:white;
+      position:relative;
+    }
+
+    header::after{
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.55);
+    }
+
+    .hero{
+      position:relative;
+      z-index:2;
+      max-width:800px;
+      padding:20px;
+    }
+
+    .hero h1{
+      font-size:4rem;
+      margin-bottom:20px;
+    }
+
+    .hero p{
+      font-size:1.3rem;
+      margin-bottom:30px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 30px;
+      background:#ff4f7b;
+      color:white;
+      text-decoration:none;
+      border-radius:5px;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      background:#e63d67;
+    }
+
+    nav{
+      position:fixed;
+      top:0;
+      width:100%;
+      background:white;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:15px 50px;
+      box-shadow:0 2px 10px rgba(0,0,0,0.1);
+      z-index:1000;
+    }
+
+    nav h2{
+      color:#ff4f7b;
+    }
+
+    nav ul{
+      display:flex;
+      list-style:none;
+      gap:20px;
+    }
+
+    nav a{
+      text-decoration:none;
+      color:#333;
+      font-weight:bold;
+    }
+
+    section{
+      padding:80px 10%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:50px;
+      font-size:2.5rem;
+      color:#ff4f7b;
+    }
+
+    .portfolio-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+      gap:20px;
+    }
+
+    .card{
+      background:white;
+      border-radius:10px;
+      overflow:hidden;
+      box-shadow:0 5px 15px rgba(0,0,0,0.1);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+    }
+
+    .card img{
+      width:100%;
+      height:250px;
+      object-fit:cover;
+    }
+
+    .card h3{
+      padding:20px;
+      text-align:center;
+    }
+
+    .about{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:40px;
+    }
+
+    .about img{
+      width:100%;
+      max-width:450px;
+      border-radius:10px;
+    }
+
+    .about-text{
+      flex:1;
+    }
+
+    form{
+      background:white;
+      padding:40px;
+      border-radius:10px;
+      box-shadow:0 5px 15px rgba(0,0,0,0.1);
+      max-width:700px;
+      margin:auto;
+    }
+
+    form input,
+    form textarea,
+    form select{
+      width:100%;
+      padding:15px;
+      margin-bottom:20px;
+      border:1px solid #ccc;
+      border-radius:5px;
+    }
+
+    form button{
+      background:#ff4f7b;
+      color:white;
+      border:none;
+      padding:15px 25px;
+      border-radius:5px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    form button:hover{
+      background:#e63d67;
+    }
+
+    footer{
+      background:#222;
+      color:white;
+      text-align:center;
+      padding:30px;
+    }
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:2.5rem;
+      }
+
+      nav{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .about{
+        flex-direction:column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <h2>Studio Foto Milano</h2>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#about">Chi Siamo</a></li>
+      <li><a href="#contact">Contatti</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home">
+    <div class="hero">
+      <h1>Catturiamo Emozioni Autentiche</h1>
+      <p>
+        Ritratti, eventi aziendali e matrimoni con uno stile moderno,
+        elegante e professionale.
+      </p>
+
+      <a href="#contact" class="btn">Richiedi un Preventivo</a>
+    </div>
+  </header>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <h2 class="section-title">Portfolio</h2>
+
+    <div class="portfolio-grid">
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop" alt="Ritratti">
+        <h3>Ritratti</h3>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop" alt="Eventi">
+        <h3>Eventi Aziendali</h3>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop" alt="Matrimoni">
+        <h3>Matrimoni</h3>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CHI SIAMO -->
+  <section id="about">
+    <h2 class="section-title">Chi Siamo</h2>
+
+    <div class="about">
+
+      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop" alt="Team">
+
+      <div class="about-text">
+        <h3>10 anni di esperienza nel settore fotografico</h3>
+
+        <p>
+          Siamo uno studio fotografico con sede a Milano specializzato
+          in ritratti, eventi aziendali e servizi matrimoniali.
+        </p>
+
+        <br>
+
+        <p>
+          Il nostro obiettivo è raccontare emozioni vere attraverso immagini
+          professionali e curate nei minimi dettagli.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTATTI -->
+  <section id="contact">
+    <h2 class="section-title">Contattaci</h2>
+
+    <form>
+
+      <input type="text" placeholder="Nome" required>
+
+      <input type="email" placeholder="Email" required>
+
+      <select required>
+        <option value="">Tipo di servizio richiesto</option>
+        <option>Ritratto</option>
+        <option>Evento Aziendale</option>
+        <option>Matrimonio</option>
+      </select>
+
+      <textarea rows="6" placeholder="Messaggio"></textarea>
+
+      <button type="submit">Invia Richiesta</button>
+
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Studio Foto Milano - Tutti i diritti riservati</p>
+  </footer>
+
+</body>
+</html>
