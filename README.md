@@ -2,3 +2,4 @@
 
 partecipanti:
 Cristian Bonomi
+Elia Camanini
