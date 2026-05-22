@@ -303,11 +303,61 @@ form select:focus{
 /* =========================
    FOOTER
 ========================= */
-footer{
-  background:#222;
+.footer{
+  background:#1c1c1c;
   color:white;
+  padding:60px 10% 20px;
+}
+
+.footer-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+  gap:40px;
+}
+
+.footer-section h3,
+.footer-section h4{
+  margin-bottom:15px;
+  color:#ff4f7b;
+}
+
+.footer-section p,
+.footer-section a{
+  color:#ddd;
+  text-decoration:none;
+  font-size:0.95rem;
+  line-height:1.6;
+}
+
+.footer-section a:hover{
+  color:#ff4f7b;
+}
+
+.footer-section ul{
+  list-style:none;
+}
+
+.social-icons{
+  display:flex;
+  gap:10px;
+  font-size:1.5rem;
+}
+
+.social-icons a{
+  transition:0.3s;
+}
+
+.social-icons a:hover{
+  transform:scale(1.2);
+}
+
+.footer-bottom{
   text-align:center;
-  padding:30px;
+  margin-top:40px;
+  border-top:1px solid #333;
+  padding-top:15px;
+  font-size:0.9rem;
+  color:#aaa;
 }
 
 /* =========================
