@@ -1,66 +1,365 @@
-const form = document.getElementById("contactForm");
-const successMessage = document.getElementById("successMessage");
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
 
-form.addEventListener("submit", function (event) {
-  event.preventDefault();
+body{
+  background:#f7f7f7;
+  color:#222;
+  line-height:1.6;
+}
 
-  // input
-  const name = document.getElementById("name");
-  const email = document.getElementById("email");
-  const service = document.getElementById("service");
-  const message = document.getElementById("message");
+/* =========================
+   ACCESSIBILITÀ (FOCUS)
+========================= */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus{
+  outline:3px solid #ff4f7b;
+  outline-offset:3px;
+}
 
-  // reset messaggi
-  successMessage.innerHTML = "";
-  document.querySelectorAll(".error").forEach(el => el.remove());
+/* =========================
+   NAVBAR
+========================= */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:white;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 50px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+  z-index:1000;
+}
 
-  let isValid = true;
+nav h2{
+  color:#ff4f7b;
+}
 
-  // VALIDAZIONE NOME
-  if (name.value.trim() === "") {
-    showError(name, "Inserisci il tuo nome");
-    isValid = false;
+nav ul{
+  display:flex;
+  list-style:none;
+  gap:20px;
+}
+
+nav a{
+  text-decoration:none;
+  color:#333;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:#ff4f7b;
+}
+
+/* =========================
+   HERO
+========================= */
+header{
+  background:url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+  position:relative;
+}
+
+header::after{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.55);
+}
+
+.hero{
+  position:relative;
+  z-index:2;
+  max-width:800px;
+  padding:20px;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+.hero h1{
+  font-size:4rem;
+  margin-bottom:20px;
+}
+
+.hero p{
+  font-size:1.3rem;
+  margin-bottom:30px;
+}
+
+/* =========================
+   ANIMAZIONE HERO
+========================= */
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* =========================
+   BUTTON
+========================= */
+.btn{
+  display:inline-block;
+  padding:14px 30px;
+  background:#ff4f7b;
+  color:white;
+  text-decoration:none;
+  border-radius:5px;
+  transition:0.3s ease;
+}
+
+.btn:hover{
+  background:#e63d67;
+  transform:scale(1.05);
+}
+
+/* =========================
+   SECTIONS
+========================= */
+section{
+  padding:80px 10%;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:50px;
+  font-size:2.5rem;
+  color:#ff4f7b;
+}
+
+/* =========================
+   PORTFOLIO
+========================= */
+.portfolio-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:white;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+.card img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+}
+
+.card h3{
+  padding:20px;
+  text-align:center;
+}
+
+/* =========================
+   ABOUT
+========================= */
+.about{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:40px;
+}
+
+.about img{
+  width:100%;
+  max-width:450px;
+  border-radius:10px;
+}
+
+.about-text{
+  flex:1;
+}
+
+/* =========================
+   FORM
+========================= */
+form{
+  background:white;
+  padding:40px;
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  max-width:700px;
+  margin:auto;
+}
+
+form input,
+form textarea,
+form select{
+  width:100%;
+  padding:15px;
+  margin-bottom:20px;
+  border:1px solid #ccc;
+  border-radius:5px;
+  transition:0.3s;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus{
+  border-color:#ff4f7b;
+}
+
+/* =========================
+   SUCCESS MESSAGE
+========================= */
+#successMessage{
+  text-align:center;
+  margin-top:20px;
+  color:green;
+  font-weight:bold;
+}
+
+/* =========================
+   FAQ
+========================= */
+.faq-container{
+  max-width:800px;
+  margin:auto;
+}
+
+.faq-item{
+  background:white;
+  margin-bottom:15px;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  transition:0.3s ease;
+}
+
+.faq-question{
+  width:100%;
+  background:none;
+  border:none;
+  padding:20px;
+  font-size:1.1rem;
+  font-weight:bold;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+  color:#222;
+  transition:0.3s;
+}
+
+.faq-question:hover{
+  background:#fff0f4;
+}
+
+.faq-question span{
+  font-size:1.5rem;
+  transition:0.3s;
+}
+
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.4s ease, padding 0.4s ease;
+  padding:0 20px;
+}
+
+.faq-answer p{
+  padding-bottom:20px;
+}
+
+.faq-item.active .faq-answer{
+  max-height:500px;
+  padding:0 20px;
+}
+
+.faq-item.active .faq-question span{
+  transform:rotate(45deg);
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer{
+  background:#222;
+  color:white;
+  text-align:center;
+  padding:30px;
+}
+
+/* =========================
+   TABLET (max 768px)
+========================= */
+@media (max-width:768px){
+
+  nav{
+    flex-direction:column;
+    gap:10px;
+    padding:15px 20px;
   }
 
-  // VALIDAZIONE EMAIL
-  if (email.value.trim() === "") {
-    showError(email, "Inserisci la tua email");
-    isValid = false;
+  nav ul{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
   }
 
-  // VALIDAZIONE SERVIZIO
-  if (service.value === "") {
-    showError(service, "Seleziona un servizio");
-    isValid = false;
+  .hero h1{
+    font-size:2.5rem;
   }
 
-  // VALIDAZIONE MESSAGGIO
-  if (message.value.trim() === "") {
-    showError(message, "Scrivi un messaggio");
-    isValid = false;
+  .hero p{
+    font-size:1.1rem;
   }
 
-  // SUCCESSO
-  if (isValid) {
-    successMessage.innerHTML =
-      "Grazie " + name.value + "! La tua richiesta è stata inviata con successo.";
-
-    successMessage.style.color = "green";
-
-    form.reset();
+  section{
+    padding:60px 5%;
   }
-});
 
-// funzione errore
-function showError(input, message) {
-  const error = document.createElement("p");
-  error.className = "error";
-  error.innerText = message;
+  .about{
+    flex-direction:column;
+    text-align:center;
+  }
 
-  error.style.color = "red";
-  error.style.fontSize = "14px";
-  error.style.marginTop = "-15px";
-  error.style.marginBottom = "15px";
+  form{
+    padding:25px;
+  }
+}
 
-  input.insertAdjacentElement("afterend", error);
+/* =========================
+   MOBILE PICCOLO
+========================= */
+@media (max-width:480px){
+
+  .hero h1{
+    font-size:2rem;
+  }
+
+  .btn{
+    padding:12px 20px;
+    font-size:0.9rem;
+  }
 }
